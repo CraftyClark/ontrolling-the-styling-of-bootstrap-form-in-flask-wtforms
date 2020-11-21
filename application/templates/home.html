@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">KBC Question XML Creator</legend>
+                {% for n in range(14) %}
+                    <div class="row col-md-10"> 
+                        <!-- Question -->
+                        {% if form.question[n].errors %}
+                            {{ form.question[n](class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                            {% for error in form.username[n].errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.question[n].label }} {{ loop.index }} {{ form.question[n](class="form-control form-control-lg") }} 
+                        {% endif %}
+                    </div>
+                    <br>
+
+                    <!-- start of options row -->
+                    <div class="row"> 
+                        <!-- Options -->
+                        <div class="col-md-6 row">
+                            {% if form.optionA[n].errors %}
+                                {{ form.optionA[n](class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                {% for error in form.optionA[n].errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="form-group col-md-2">
+                                    {{ form.optionA[n].label(class="form-control-label") }}
+                                </div>
+                                <div class="form-group col-md-4">
+                                    {{ form.optionA[n](class="form-control form-control-lg") }}
+                                </div>
+                            {% endif %}
+
+                    
+                            {% if form.optionB[n].errors %}
+                                {{ form.optionB[n](class="form-control  is-invalid") }}
+                                <div class="invalid-feedback">
+                                {% for error in form.optionB[n].errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="form-group col-md-2">
+                                    {{ form.optionB[n].label(class="form-control-label") }}
+                                </div>
+                                <div class="form-group col-md-4">
+                                    {{ form.optionB[n](class="form-control form-control-lg") }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+
+                        <div class="col-md-6 row">
+                            {% if form.optionC[n].errors %}
+                                {{ form.optionC[n](class="form-control  is-invalid") }}
+                                <div class="invalid-feedback">
+                                {% for error in form.optionC[n].errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="form-group col-md-2">
+                                    {{ form.optionC[n].label(class="form-control-label") }}
+                                </div>
+                                <div class="form-group col-md-4">
+                                    {{ form.optionC[n](class="form-control form-control-lg") }}
+                                </div>
+                            {% endif %}
+                        
+
+                    
+                            {% if form.optionD[n].errors %}
+                                {{ form.optionD[n](class="form-control  is-invalid") }}
+                                <div class="invalid-feedback">
+                                {% for error in form.optionD[n].errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                                </div>
+                            {% else %}                        
+                                <div class="form-group col-md-2">
+                                    {{ form.optionD[n].label(class="form-control-label") }}
+                                </div>
+                                <div class="form-group col-md-4">
+                                    {{ form.optionD[n](class="form-control form-control-lg") }}
+                                </div>                       
+                            {% endif %}
+                        </div>
+                  
+                    </div>
+                    <!-- end of options row -->
+
+
+                    <!-- Answer -->
+                    {% if form.answer[n].errors %}
+                        {{ form.answer[n](class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                        {% for error in form.answer[n].errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.answer[n].label }} {{ form.answer[n](class="form-control col-sm-4") }} 
+                    {% endif %}
+
+                    <!-- Timer -->
+                    {% if form.timer[n].errors %}
+                        {{ form.timer[n](class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                        {% for error in form.timer[n].errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.timer[n].label }} {{ form.timer[n](class="form-control col-sm-4") }} 
+                    {% endif %}
+                    <hr>
+                {% endfor %}                    
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}
